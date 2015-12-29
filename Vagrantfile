@@ -22,7 +22,7 @@ end
 # you're doing.
 Vagrant.configure(2) do |config|
 
-  #config.vm.box = "ubuntu/precise64" 	#12.04
+  #config.vm.box = "ubuntu/precise64" 	# 12.04
   config.vm.box = "ubuntu/trusty64"	# 14.04
 
   # bail out on 'up' if we don't have ibm vars
