@@ -17,7 +17,7 @@ then
 fi
 
 cd ~
-curl -L "https://cli.run.pivotal.io/stable?release=linux64-binary&source=github" | tar -zx
+curl -s -L "https://cli.run.pivotal.io/stable?release=linux64-binary&source=github" | tar -zx
 sudo mv ~/cf /usr/local/bin
 cf --version
 
