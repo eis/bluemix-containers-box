@@ -2,7 +2,8 @@ IBM Bluemix Containers box
 ==========================
 
 Simple Vagrantfile to set up IBM Bluemix and Bluemix Containers
-connectivity in an Ubuntu VirtualBox instance.
+connectivity in an Ubuntu VirtualBox instance. Also contains example
+Vagrantfile and Node.js app so that containers can be tested.
 
 Note that this installs old version (1.8.1) of Docker, since Bluemix
 [doesn't support current versions]
