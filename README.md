@@ -4,16 +4,6 @@ IBM Bluemix Containers box
 Simple Vagrantfile to set up IBM Bluemix and Bluemix Containers
 connectivity in an Ubuntu VirtualBox instance.
 
-Define ibm_email and ibm_pass that correspond to your login
-credentials as environment variables and do "vagrant up".
-
-This assumes eu-gb hosting zone. For other regions, change the domain
-names in install-bluemix-cli.sh script.
-
-After that, do "vagrant ssh" and use "cf ic info" etc to do
-your tasks against the cloudfoundry cloud by Bluemix, or
-"docker" to work with images locally.
-
 Note that this installs old version (1.8.1) of Docker, since Bluemix
 [doesn't support current versions]
 (https://www.ng.bluemix.net/docs/containers/container_cli_ov.html).
@@ -38,7 +28,20 @@ Example Node.js application
 Application container
  - Dockerfile: contains the file we use to set up runtime container for our app, both remotely and locally
 
-Using the Dockerfile
+Using to communicate with Bluemix
+---------------------------------
+
+Just define ibm_email and ibm_pass that correspond to your login
+credentials as environment variables and do `vagrant up`.
+
+This assumes eu-gb hosting zone. For other regions, change the domain
+names in install-bluemix-cli.sh script.
+
+After that, you can use "vagrant ssh" and cf ic info" etc to do
+your tasks against the cloudfoundry cloud by Bluemix, or
+"docker" to work with images locally.
+
+Using the example Dockerfile
 --------------------
 Example Dockerfile is using instructions from
 [here](https://nodejs.org/en/docs/guides/nodejs-docker-webapp/).
@@ -48,9 +51,7 @@ It can be taken into local use with
 ```
 $ vagrant ssh
 $ cd /vagrant
-```
 
-```
 # Build it
 $ docker build -t $yourusername/node-web-app .
 
@@ -58,7 +59,6 @@ $ docker build -t $yourusername/node-web-app .
 $ docker images
 
 # let's run it!
-
 $ docker run -p 49160:8080 -d $yourusername/node-web-app
 
 # shows the id, port
@@ -84,14 +84,19 @@ Using example Node.js Dockerfile on Bluemix
 $ vagrant ssh
 $ cd /vagrant
 $ cf ic login
+
 # view namespace, registry
 $ cf ic info
+
 # view docker image tag
 $ docker ps -a
+
 # associate them
 $ docker tag $yourusername/node-web-app registry.eu-gb.bluemix.net/$yournamespace/$newimagename
+
 # and push
 $ docker push registry.eu-gb.bluemix.net/$yournamespace/$newimagename
+
 # and run
 $ cf ic run --name $NEWCONTAINERNAME -p 8080:8080 -p 443:443 -d -t registry.eu-gb.bluemix.net/$yournamespace/$newimagename
 
