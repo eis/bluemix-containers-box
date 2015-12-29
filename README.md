@@ -8,6 +8,9 @@ Note that this installs old version (1.8.1) of Docker, since Bluemix
 [doesn't support current versions]
 (https://www.ng.bluemix.net/docs/containers/container_cli_ov.html).
 
+Prerequisite: you have to have registered to Bluemix, so you have IBM
+id email and password available. Also assumes Vagrant, Virtualbox installed.
+
 File descriptions
 -----------------
 
@@ -30,9 +33,6 @@ Application container
 
 Using to communicate with Bluemix
 ---------------------------------
-
-Prerequisite: you have to have registered to Bluemix, so you have IBM
-id email and password available. Also assumes Vagrant, Virtualbox installed.
 
 Just define ibm_email and ibm_pass that correspond to your login
 credentials as environment variables and do `vagrant up`.
