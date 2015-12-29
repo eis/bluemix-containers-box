@@ -18,9 +18,29 @@ Note that this installs old version (1.8.1) of Docker, since Bluemix
 [doesn't support current versions]
 (https://www.ng.bluemix.net/docs/containers/container_cli_ov.html).
 
-Example Node.js Dockerfile
---------------------------
-There is an example Dockerfile also, using instructions from
+File descriptions
+-----------------
+
+Repository metadata
+ - .gitignore: git file repository metadata, which files we do not store
+ - README.md: this file
+ - LICENSE: your rights as a user of this code
+
+Local environment scripts
+ - Vagrantfile: creates your local Ubuntu instance
+ - install-docker.sh: helper script for Vagrant to install Docker
+ - install-bluemix-cli.sh: helper script for Vagrant to install Bluemix
+
+Example Node.js application
+ - package.json: tells what our app dependencies are
+ - server.js: actual application
+
+Application container
+ - Dockerfile: contains the file we use to set up runtime container for our app, both remotely and locally
+
+Using the Dockerfile
+--------------------
+Example Dockerfile is using instructions from
 [here](https://nodejs.org/en/docs/guides/nodejs-docker-webapp/).
 
 It can be taken into local use with
@@ -57,8 +77,8 @@ Connection: keep-alive
 Hello world
 ```
 
-Example Node.js Dockerfile, on Bluemix
---------------------------------------
+Using example Node.js Dockerfile on Bluemix
+-------------------------------------------
 
 ```
 $ vagrant ssh
@@ -79,4 +99,4 @@ $ cf ic run --name $NEWCONTAINERNAME -p 8080:8080 -p 443:443 -d -t registry.eu-g
 $ cf ip list -a
 
 # Use ip:8080 from your browser to see your app
-$```
+```
