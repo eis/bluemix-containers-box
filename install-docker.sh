@@ -14,7 +14,8 @@ apt-get update
 
 apt-get -y install linux-image-extra-$(uname -r)
 
-apt-get -y install docker-engine
+# Bluemix needs old version
+apt-get -y install docker-engine=1.8.1-0~trusty
 
 sudo usermod -aG docker vagrant
 
