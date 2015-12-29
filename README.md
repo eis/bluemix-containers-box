@@ -31,6 +31,9 @@ Application container
 Using to communicate with Bluemix
 ---------------------------------
 
+Prerequisite: you have to have registered to Bluemix, so you have IBM
+id email and password available.
+
 Just define ibm_email and ibm_pass that correspond to your login
 credentials as environment variables and do `vagrant up`.
 
